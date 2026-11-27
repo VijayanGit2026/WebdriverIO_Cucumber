@@ -1,302 +1,319 @@
-# SauceDemo UI Automation – WebdriverIO + JavaScript + Cucumber
+# SauceDemo UI Automation – WebdriverIO 10 + JavaScript + Cucumber
 
-A practical UI automation framework developed using **WebdriverIO 9, JavaScript, Cucumber BDD, Page Object Model (POM), and Allure Reporting**.
+## 1. Project Information
 
-> **Disclaimer:** This is an independent training project that uses the publicly available SauceDemo demo application. It does not contain employer source code, banking data, confidential information, internal URLs, or company credentials. It is intended for learning and practice only and must not be used for testing production banking applications.
+**GitHub Repository:**  
+https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
 
-## 1. Project Overview
+**Local Project Path:**
 
-This framework automates the complete shopping workflow of the SauceDemo application, including login, product selection, shopping cart management, checkout, and order confirmation.
+`D:\Automation\Playwright\WebdriverIO_Cucumber`
 
-### Test Scenarios Covered
+**Active development branch:** `upgrade/webdriverio-10`
 
-- Login with valid credentials
-- Login with a locked-out account
-- Login with an invalid password
-- Login without entering a username
-- Add Sauce Labs Backpack to the shopping cart
-- Verify shopping cart contents
-- Enter checkout information
-- Verify checkout overview
-- Complete an order and verify confirmation
-- Remove an item from the shopping cart
-- Capture failure screenshots and generate Allure reports
+**Technology Stack:**
+- WebdriverIO 10.2.0
+- JavaScript
+- Cucumber BDD / Gherkin
+- Page Object Model (POM)
+- Node.js and npm
+- Chrome
+- Allure Reporting
+- Git and GitHub
 
-## 2. Technology Stack
+---
 
-| Technology              | Purpose                               |
-| ----------------------- | ------------------------------------- |
-| Node.js                 | JavaScript runtime environment        |
-| npm                     | Package and dependency management     |
-| NVM                     | Node.js version management            |
-| WebdriverIO 9           | Browser automation framework          |
-| JavaScript              | Programming language                  |
-| Cucumber / Gherkin      | Behavior-Driven Development (BDD)     |
-| Page Object Model (POM) | Automation framework design pattern   |
-| WebdriverIO Assertions  | Test validation and assertions        |
-| Allure Reporting        | Test execution reporting              |
-| Git                     | Version control                       |
-| GitHub                  | Source code hosting and collaboration |
+## 2. Prerequisites
 
-## 3. Prerequisites
+Install the following software:
 
-Install the following software before executing the project:
+| Software              | Purpose                              |
+|:----------------------|:-------------------------------------|
+| Node.js 20+           | JavaScript runtime                   |
+| npm                   | Package management                   |
+| NVM for Windows       | Node.js version management (optional)|
+| Git                   | Version control                      |
+| Google Chrome         | Browser automation                   |
+| Visual Studio Code    | Code editor                          |
 
-- Node.js LTS (Node.js 20+ recommended for this sample)
-- npm
-- NVM for Windows (optional, for managing Node.js versions)
-- Google Chrome
-- Visual Studio Code
-- Git
+**Verified environment:** Node.js 26.13.0 and npm 11.20.0.
 
-**Note:** Use company-approved software installations, package registries, and development tools when working in restricted enterprise environments.
+### Verify installations
 
-## 4. GitHub Repository
-
-**Repository URL:**
-
-https://github.com/VijayanGit2026/WebdriverIO_Cucumber
-
-### Clone the Repository
-
-Open VS Code Terminal or Windows PowerShell and execute:
+Open PowerShell:
 
 ```powershell
-git clone https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+node --version
+npm --version
+git --version
 ```
 
-Navigate to the project directory:
-
-```powershell
-cd SauceDemo_WebdriverIO_Cucumber
-```
-
-## VS Code Extensions
-
-Install the following extensions in Visual Studio Code to make framework development easier.
-
-| Extension                       | Purpose                                                                           |
-| ------------------------------- | --------------------------------------------------------------------------------- | --- |
-| Cucumber (Gherkin) Full Support | Gherkin syntax highlighting, autocomplete and step navigation in `.feature` files |
-| Prettier - Code formatter       | Formats JavaScript code consistently                                              |
-| ESLint                          | Identifies JavaScript coding issues
-
-### Installation
-
-1. Open Visual Studio Code.
-2. Select the Extensions icon in the left sidebar.
-3. Search for each extension by its name.
-4. Click **Install**.
-5. Restart VS Code if necessary.
-
-**Important:** These are recommended editor extensions. They are not npm dependencies and do not need to be installed using `npm install`.
-
-## 5. Installation and Setup
-
-### Step 1: Install and Select Node.js Version
-
-If NVM is installed, execute:
+### Optional: Install Node.js using NVM
 
 ```powershell
 nvm install 22
 nvm use 22
 ```
 
-Verify the Node.js and npm installations:
+Verify:
 
 ```powershell
 node -v
 npm -v
 ```
 
-### Step 2: Install Project Dependencies
+---
 
-Navigate to the project root directory and execute:
+## 3. VS Code Extensions
+
+Recommended extensions:
+
+| Extension | Purpose |
+|---|---|
+| Cucumber (Gherkin) Full Support | Gherkin highlighting and navigation |
+| Prettier | JavaScript formatting |
+| ESLint | JavaScript code quality |
+
+Installation:
+
+1. Open Visual Studio Code.
+2. Select Extensions.
+3. Search for each extension.
+4. Click Install.
+5. Restart VS Code if necessary.
+
+These are editor extensions, not npm dependencies.
+
+---
+
+## 4. First-Time Project Setup – Fresh Git Clone
+
+### Step 1: Open PowerShell
+
+Navigate to the parent directory:
 
 ```powershell
-npm install
+cd "D:\Automation\Playwright"
 ```
 
-Alternatively, if a valid `package-lock.json` is available in the repository, use:
+### Step 2: Clone the GitHub repository
+
+```powershell
+git clone https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+```
+
+### Step 3: Navigate into the cloned project
+
+```powershell
+cd "WebdriverIO_Cucumber"
+```
+
+### Step 4: Fetch remote branches
+
+```powershell
+git fetch origin
+```
+
+### Step 5: Switch to the WebdriverIO 10 branch
+
+```powershell
+git switch --track origin/upgrade/webdriverio-10
+```
+
+### Step 6: Verify the branch
+
+```powershell
+git branch
+git status
+git log -3 --oneline
+```
+
+Expected active branch:
+
+`upgrade/webdriverio-10`
+
+---
+
+## 5. Install Project Dependencies
+
+**Important: After every fresh clone, install dependencies before executing tests.**
+
+Run:
 
 ```powershell
 npm ci
 ```
 
-This installs the dependencies specified in the project configuration.
+This installs the exact dependency versions recorded in `package-lock.json`.
 
-### Step 3: Configure Environment Variables (Optional)
+Do not execute test commands before completing dependency installation.
 
-Create a local `.env` file using the provided example file.
+### Verify WebdriverIO
 
-**Windows PowerShell:**
+```powershell
+npx wdio --version
+```
+
+Expected:
+
+```text
+10.2.0
+```
+
+### Verify WDIO dependencies
+
+```powershell
+npm ls @wdio/cli @wdio/local-runner @wdio/cucumber-framework @wdio/spec-reporter @wdio/allure-reporter @wdio/globals
+```
+
+### Verify security audit
+
+```powershell
+npm audit
+```
+
+Expected:
+
+```text
+found 0 vulnerabilities
+```
+
+**Note:** The project uses a targeted `readdir-glob@4.0.0` override under Archiver to address the minimatch advisory. This is outside Archiver 8's declared dependency range, so compatibility should be retested after dependency updates.
+
+### If npm reports unapproved driver installation scripts
+
+The current project is configured for Chrome. Warnings about `edgedriver` and `geckodriver` install scripts do not necessarily prevent Chrome tests from running. Do not approve them unless those browsers are required and the scripts have been reviewed.
+
+---
+
+## 6. Optional Environment Configuration
+
+If environment configuration is required, create a local `.env` file:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-**macOS / Linux:**
+Update the required values locally.
 
-```bash
-cp .env.example .env
-```
+Never commit private credentials, access tokens, or sensitive environment variables to GitHub.
 
-Update environment-specific configuration values if required.
+---
 
-**Security:** Never commit private credentials, access tokens, or sensitive environment variables to GitHub.
+## 7. Execute Automation Tests
 
-## 6. Execute Automation Tests
-
-### Run All Test Scenarios
+### Run all test scenarios
 
 ```powershell
 npm test
 ```
 
-### Run Smoke Tests
-
-```powershell
-npm run test:smoke
-```
-
-### Run Regression Tests
-
-```powershell
-npm run test:regression
-```
-
-### Execute Individual Feature Files
-
-**Login Feature:**
+### Run login tests
 
 ```powershell
 npm run test:login
 ```
 
-**Checkout Feature:**
+### Run checkout tests
 
 ```powershell
 npm run test:checkout
 ```
 
-### Execute Tests in Headless Mode
+### Run smoke tests
 
-**Windows PowerShell:**
+```powershell
+npm run test:smoke
+```
+
+### Run regression tests
+
+```powershell
+npm run test:regression
+```
+
+### Execute headless tests – Windows PowerShell
+
+Enable headless mode:
 
 ```powershell
 $env:HEADLESS="true"
 npm test
 ```
 
-To disable headless execution:
+Disable headless mode:
 
 ```powershell
 Remove-Item Env:HEADLESS
 ```
 
-**macOS / Linux:**
+---
 
-```bash
-HEADLESS=true npm test
-```
+## 8. PDF Order Download and Verification
 
-## 7. Order PDF Downloads
+The checkout feature generates order PDFs after successful order confirmation.
 
-The checkout PDF scenario saves generated order PDFs inside the project-local folder:
+**Download folder:**
 
-```text
-pdf_download/
-```
+`pdf_download/`
 
-The Chrome download directory is configured in `wdio.conf.js` to use this folder. After the browser download completes, the test checks the PDF header and renames the file with a local timestamp, for example:
+Example generated file:
 
 ```text
-pdf_download/order_2026-11-27_14-30-15.pdf
+pdf_download/order_2026-11-27_23-25-48.pdf
 ```
 
-Generated PDFs and Chrome partial-download files (`.crdownload`) are excluded from Git by `.gitignore`. The folder itself is retained through `.gitkeep`.
+The framework:
+- Configures Chrome downloads to the project-local PDF folder.
+- Waits for the PDF download.
+- Verifies the PDF file header (`%PDF-`).
+- Renames the downloaded file with a timestamp.
+- Reports the filename, path, and file size.
 
-Run the checkout feature:
+Execute the checkout feature:
 
 ```powershell
 npm run test:checkout
 ```
 
-The terminal prints the final PDF filename, full project-local path, and file size when verification succeeds. A failed download reports the expected folder and its contents.
+Generated PDFs and temporary `.crdownload` files are excluded from Git. The folder is retained using `.gitkeep`.
 
-## 8. Allure Reporting
+---
 
-The framework integrates Allure Reporting to generate detailed test execution reports.
+## 9. Allure Reporting
 
-After test execution, generate the report:
+After test execution, generate the Allure report:
 
 ```powershell
 npm run report:allure
 ```
 
-Open the generated report:
+Open the report:
 
 ```powershell
 npm run report:open
 ```
 
-### Report Features
+The report includes:
+- Passed and failed scenarios.
+- Test execution details.
+- Execution duration.
+- Cucumber step information.
+- Screenshots and failure attachments, where captured.
 
-- Passed and failed test scenarios
-- Test execution details
-- Execution duration
-- Cucumber step information
-- Screenshots and failure attachments, where captured
-- Detailed test execution results
-
-## 9. Project Structure
-
-```text
-SauceDemo_WebdriverIO_Cucumber/
-│
-├── .github/
-│   └── workflows/                  # CI workflow examples
-│
-├── docs/                           # Project documentation
-│   ├── charu-learning-path.md
-│   ├── jfrog-npm-setup.md
-│   └── qtest-test-case-mapping.md
-│
-├── features/
-│   ├── login.feature               # Login test scenarios
-│   ├── checkout.feature            # Checkout test scenarios
-│   │
-│   └── step-definitions/
-│       ├── login.steps.js
-│       └── checkout.steps.js
-│
-├── pageobjects/                    # Page Object Model classes
-│
-├── support/
-│   └── hooks.js                    # Cucumber hooks
-│
-├── test-data/                      # Public demo test data
-│
-├── .env.example                    # Environment configuration template
-├── .gitignore                      # Git ignored files
-├── LICENSE
-├── package.json                    # Project dependencies and scripts
-├── package-lock.json               # Dependency lock file, if committed
-├── README.md                       # Project documentation
-└── wdio.conf.js                    # WebdriverIO configuration
-```
+---
 
 ## 10. qTest Integration – Test Management
 
-The automation scenarios can be mapped to qTest test cases for test management, execution tracking, and test coverage.
-
-Refer to:
+The project contains example qTest test-case mapping documentation:
 
 `docs/qtest-test-case-mapping.md`
 
-This project provides example test-case mapping documentation. It does not currently integrate directly with qTest APIs or automatically upload test execution results.
+It explains how automation scenarios can be mapped to qTest test cases for test management and execution tracking.
 
-For actual project implementation, follow the organization's approved qTest configuration and integration procedures.
+**Current limitation:** Direct qTest API integration and automatic test-result uploads are not implemented.
+
+---
 
 ## 11. JFrog Integration – Package Management
 
@@ -304,64 +321,221 @@ Refer to:
 
 `docs/jfrog-npm-setup.md`
 
-This document explains the relationship between npm package management and JFrog Artifactory.
+This document explains npm package management and JFrog Artifactory configuration guidance.
 
-The sample project does not contain a private JFrog registry URL, credentials, or an active Artifactory integration.
+**Current limitation:** The sample project does not contain an active private JFrog registry integration or credentials.
 
-Never commit JFrog access tokens or private registry credentials to GitHub.
-
-## 12. Project Limitations
-
-- The framework currently focuses on browser-based automation using WebdriverIO.
-- Native mobile application automation using Appium and Perfecto is not included.
-- Database validation using MySQL or PostgreSQL is not implemented.
-- qTest API integration and automated test-result uploads are not implemented.
-- JFrog Artifactory integration is documented but not configured.
-- Google Chrome is required for the current browser configuration.
-- WebdriverIO 9 supports automatic local browser-driver management in supported configurations. Restricted environments may require organization-approved browser and driver infrastructure.
-
-## 13. Public SauceDemo Test Credentials
-
-The project uses publicly available SauceDemo training accounts.
-
-| Username          | Password       | Expected Behaviour |
-| ----------------- | -------------- | ------------------ |
-| `standard_user`   | `secret_sauce` | Successful login   |
-| `locked_out_user` | `secret_sauce` | Login blocked      |
-
-These are public demonstration credentials and must not be confused with real customer or banking credentials.
-
-**Demo Application:**
-
-https://www.saucedemo.com/
-
-## 14. Learning Resources
-
-The `docs` directory contains additional project-specific learning material.
-
-Recommended learning sequence:
-
-1. `docs/charu-learning-path.md` – WebdriverIO learning roadmap
-2. `docs/qtest-test-case-mapping.md` – qTest test-case mapping examples
-3. `docs/jfrog-npm-setup.md` – npm and JFrog configuration guidance
-
-### Official Documentation
-
-- [WebdriverIO Documentation](https://webdriver.io/)
-- [Cucumber Documentation](https://cucumber.io/docs/)
-- [JavaScript – MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Allure Reporting Documentation](https://allurereport.org/)
+Never commit private registry credentials or access tokens to GitHub.
 
 ---
+
+## 12. Project Structure
+
+```text
+WebdriverIO_Cucumber/
+│
+├── .github/
+│   └── workflows/
+│
+├── docs/
+│   ├── learning-path.md
+│   ├── jfrog-npm-setup.md
+│   └── qtest-test-case-mapping.md
+│
+├── features/
+│   ├── login.feature
+│   ├── checkout.feature
+│   └── step-definitions/
+│       ├── login.steps.js
+│       └── checkout.steps.js
+│
+├── pageobjects/
+│
+├── pdf_download/
+│
+├── support/
+│   └── hooks.js
+│
+├── test-data/
+│
+├── .env.example
+├── .gitignore
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── README.md
+└── wdio.conf.js
+```
+
+---
+
+## 13. Subsequent Project Sessions – Reopen Existing Clone
+
+If the project is already cloned, do not clone it again.
+
+Open PowerShell:
+
+```powershell
+cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
+```
+
+Switch to the upgrade branch:
+
+```powershell
+git switch upgrade/webdriverio-10
+```
+
+Get the latest updates:
+
+```powershell
+git pull origin upgrade/webdriverio-10
+```
+
+If dependencies have changed:
+
+```powershell
+npm ci
+```
+
+Open the project in VS Code:
+
+```powershell
+code .
+```
+
+Execute tests:
+
+```powershell
+npm run test:login
+npm run test:checkout
+npm test
+```
+
+---
+
+## 14. Git Commands
+
+Check working-tree status:
+
+```powershell
+git status
+```
+
+Check the current branch:
+
+```powershell
+git branch
+```
+
+View recent commits:
+
+```powershell
+git log --oneline -5
+```
+
+Stage changes:
+
+```powershell
+git add .
+```
+
+Commit changes:
+
+```powershell
+git commit -m "Describe your changes"
+```
+
+Push changes:
+
+```powershell
+git push origin upgrade/webdriverio-10
+```
+
+---
+
+## 15. Complete Fresh Clone – All-in-One Command Sequence
+
+Use this sequence when setting up the project on a new machine or after deleting the local project.
+
+```powershell
+# Navigate to parent directory
+cd "D:\Automation\Playwright"
+
+# Clone repository
+git clone https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+
+# Enter project folder
+cd "WebdriverIO_Cucumber"
+
+# Fetch remote branches
+git fetch origin
+
+# Switch to WDIO 10 branch
+git switch --track origin/upgrade/webdriverio-10
+
+# Install exact dependencies
+npm ci
+
+# Verify WebdriverIO version
+npx wdio --version
+
+# Verify dependency security
+npm audit
+
+# Execute login tests
+npm run test:login
+
+# Execute checkout tests
+npm run test:checkout
+
+# Execute complete test suite
+npm test
+
+# Generate Allure report
+npm run report:allure
+
+# Open Allure report
+npm run report:open
+
+# Open project in VS Code
+code .
+```
+
+---
+
+## 16. Verified Execution Results
+
+The clean-clone installation and execution were verified on the current project branch.
+
+| Verification | Result |
+|---|---|
+| npm ci | 395 packages installed |
+| WebdriverIO version | 10.2.0 |
+| npm audit | 0 vulnerabilities |
+| Login feature | 12 passing |
+| Checkout feature | 28 passing |
+| Complete test run | 2 of 2 spec files passed |
+| PDF download | Successful |
+| PDF validation | Valid `%PDF-` header |
+
+Chrome may display AMD graphics warnings or occasional stale-element warnings during execution. These did not prevent the verified test runs from passing.
+
+---
+
+## 17. Project Disclaimer
+
+This is an independent QA automation training project using the publicly available SauceDemo demo application.
+
+It does not contain employer source code, banking data, confidential information, internal URLs, or company credentials. It is intended for learning and practice only and must not be used for testing production banking applications.
 
 ## Project Maintainer
 
 **Vijayan**
 
-**GitHub:** https://github.com/VijayanGit2026
+GitHub: https://github.com/VijayanGit2026
 
-**Repository:** SauceDemo_WebdriverIO_Cucumber
+Repository: WebdriverIO_Cucumber
 
-**Technology:** WebdriverIO 9 | JavaScript | Cucumber BDD | POM | Allure Reporting
+Technology: WebdriverIO 10 | JavaScript | Cucumber BDD | POM | Allure Reporting
 
-**Purpose:** Practical QA Automation Framework Learning and Implementation.
+Purpose: Practical QA Automation Framework Learning and Implementation.

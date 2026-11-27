@@ -1,20 +1,21 @@
-# WebdriverIO + JavaScript + Cucumber – Learning Path
+# WebdriverIO 10 + JavaScript + Cucumber – Learning Path
 
 ## 1. Understand the Framework Architecture
 
 Before writing automation scripts, understand the purpose of each file and folder.
 
-| File / Folder                    | Purpose                                                                                                              |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `wdio.conf.js`                   | Main configuration file for the WebdriverIO runner, browser capabilities, Cucumber integration, hooks and reporters. |
-| `features/*.feature`             | Contains business-readable test scenarios written in Gherkin syntax.                                                 |
-| `features/step-definitions/*.js` | Connects Gherkin steps (Given, When, Then) to JavaScript automation code.                                            |
-| `pageobjects/*.js`               | Contains page elements, selectors and reusable page interaction methods.                                             |
-| `support/hooks.js`               | Contains Cucumber hooks for scenario setup, teardown and failure screenshot attachments.                             |
-| `test-data/`                     | Stores test data, including public SauceDemo demo account details.                                                   |
-| `package.json`                   | Defines project dependencies, scripts and package configuration.                                                     |
-| `package-lock.json`              | Locks dependency versions for consistent installations.                                                              |
-| `.env.example`                   | Provides a template for environment-specific configuration.                                                          |
+| File / Folder                    | Purpose                                                                                  |
+|:---------------------------------|:-----------------------------------------------------------------------------------------|
+| `wdio.conf.js`                   | Main configuration for WDIO runner, browser capabilities, Cucumber, hooks and reporters. |
+| `features/*.feature`             | Contains business-readable test scenarios written in Gherkin syntax.                     |
+| `features/step-definitions/*.js` | Connects Gherkin steps (Given, When, Then) to JavaScript automation code.                |
+| `pageobjects/*.js`               | Contains page elements, selectors and reusable page interaction methods.                |
+| `support/hooks.js`               | Contains Cucumber hooks for setup, teardown and failure screenshot attachments.         |
+| `test-data/`                     | Stores test data, including public SauceDemo demo account details.                       |
+| `pdf_download/`                  | Stores generated order PDF files after successful checkout.                              |
+| `package.json`                   | Defines project dependencies, scripts and package configuration.                         |
+| `package-lock.json`              | Locks dependency versions for consistent installations.                                  |
+| `.env.example`                   | Provides a template for environment-specific configuration.                              |
 
 ## 2. Set Up and Run the Framework Locally
 
@@ -23,15 +24,53 @@ Follow these steps to configure and execute the project.
 1. Install the Node.js version approved for your environment.
 2. Use NVM for Windows if permitted by your workstation policy.
 3. Install Visual Studio Code and Google Chrome.
-4. Clone the GitHub repository.
-5. Navigate to the project root directory.
-6. Copy `.env.example` to `.env` if you need to override the base URL or demo credentials.
-7. Install dependencies using `npm ci`.
-8. Ensure Google Chrome is installed and permitted by your environment.
-9. Execute the automation tests using `npm test`.
-10. Review the execution results and generated reports.
+4. Install Git.
+5. Clone the GitHub repository.
+6. Navigate to the project root directory.
+7. Switch to the `upgrade/webdriverio-10` branch.
+8. Copy `.env.example` to `.env` if environment-specific configuration is required.
+9. Install dependencies using `npm ci`.
+10. Verify the WebdriverIO installation.
+11. Execute automation tests.
+12. Review execution results and generated reports.
 
-### Useful Commands
+### GitHub Repository
+
+https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+
+### Fresh Clone Commands
+
+```powershell
+cd "D:\Automation\Playwright"
+
+git clone https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+
+cd "WebdriverIO_Cucumber"
+
+git fetch origin
+
+git switch --track origin/upgrade/webdriverio-10
+```
+
+### Install Project Dependencies
+
+```powershell
+npm ci
+```
+
+### Verify WebdriverIO
+
+```powershell
+npx wdio --version
+```
+
+Expected version:
+
+```text
+10.2.0
+```
+
+### Useful Execution Commands
 
 Check Node.js and npm versions:
 
@@ -40,10 +79,10 @@ node -v
 npm -v
 ```
 
-Install project dependencies:
+Check security audit:
 
 ```powershell
-npm ci
+npm audit
 ```
 
 Run all test scenarios:
@@ -68,6 +107,12 @@ Run smoke tests:
 
 ```powershell
 npm run test:smoke
+```
+
+Run regression tests:
+
+```powershell
+npm run test:regression
 ```
 
 Generate the Allure report:
@@ -95,21 +140,24 @@ Follow this sequence to build your knowledge progressively.
 5. Variables, functions, objects and arrays
 6. Promises and async/await
 
-### Step: Install and understand VS Code extensions
+### Install and Understand VS Code Extensions
 
 Install and explore these extensions:
 
-1. **Cucumber (Gherkin) Full Support**
-   - Provides syntax highlighting for `.feature` files.
-   - Helps identify Gherkin keywords such as Feature, Scenario, Given, When, and Then.
-   - Helps navigate between feature steps and step definitions.
+**1. Cucumber (Gherkin) Full Support**
 
-2. **Prettier**
-   - Formats JavaScript files.
-   - Keeps indentation and code formatting consistent.
+- Provides syntax highlighting for `.feature` files.
+- Helps identify Gherkin keywords such as Feature, Scenario, Given, When and Then.
+- Helps navigate between feature steps and step definitions.
 
-3. **ESLint**
-   - Identifies potential JavaScript errors and coding issues.
+**2. Prettier**
+
+- Formats JavaScript files.
+- Keeps indentation and code formatting consistent.
+
+**3. ESLint**
+
+- Identifies potential JavaScript errors and coding issues.
 
 **Practice exercise:**
 
@@ -123,7 +171,7 @@ Install and explore these extensions:
 
 ### Phase 2: WebdriverIO Fundamentals
 
-7. WebdriverIO installation and project configuration
+7. WebdriverIO 10 installation and project configuration
 8. Understanding `wdio.conf.js`
 9. Browser session and browser commands
 10. Element selectors using `$()` and `$$()`
@@ -247,7 +295,7 @@ The execution process:
 Use the SauceDemo application to practise the following scenarios.
 
 | Exercise | Functional Area                          |
-| -------- | ---------------------------------------- |
+|:--------:|:-----------------------------------------|
 | 1        | Successful login                         |
 | 2        | Invalid username and password            |
 | 3        | Locked-out user validation               |
@@ -258,6 +306,8 @@ Use the SauceDemo application to practise the following scenarios.
 | 8        | Enter checkout information               |
 | 9        | Verify checkout overview                 |
 | 10       | Complete order and validate confirmation |
+| 11       | Generate order PDF after checkout        |
+| 12       | Verify downloaded PDF file               |
 
 Try implementing each scenario independently using feature files, step definitions and page objects.
 
@@ -272,6 +322,8 @@ Try implementing each scenario independently using feature files, step definitio
 - Reuse common methods instead of duplicating automation code.
 - Review execution logs and screenshots when tests fail.
 - Maintain dependencies using the approved package registry.
+- Use `npm ci` for clean installations from the committed lockfile.
+- Avoid unreviewed dependency overrides and forced dependency downgrades.
 - Follow your organization's security policies when working in restricted environments.
 
 ## 7. Official Learning Resources
@@ -286,8 +338,10 @@ Try implementing each scenario independently using feature files, step definitio
 
 ---
 
-**Learning Objective**
+## Learning Objective
 
-Build a strong understanding of WebdriverIO, JavaScript, Cucumber BDD and Page Object Model by implementing and executing a complete UI automation framework.
+Build a strong understanding of WebdriverIO 10, JavaScript, Cucumber BDD and Page Object Model by implementing and executing a complete UI automation framework.
 
 The objective is to understand not only how to write automation scripts, but also how to maintain, debug, execute and report automated test cases in a real-world QA environment.
+
+The learner should be able to independently clone the repository, install dependencies, execute individual test suites, run the complete framework, troubleshoot failures and review Allure reports.
