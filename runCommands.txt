@@ -15,11 +15,26 @@ npx wdio --version
 npm audit
 
 # 2. Run tests
+
+# Run all 6 test scenarios
 npm test
+# Run login scenarios (valid, locked-out, invalid password, blank username)
 npm run test:login
+# Run checkout scenarios (complete checkout, remove backpack)
 npm run test:checkout
+# Run smoke scenarios (valid login, complete checkout)
 npm run test:smoke
+# Run regression scenarios (scenarios tagged @regression)
 npm run test:regression
+
+# Positive login
+npx wdio run wdio.conf.js --cucumberOpts.tags="@positive"
+# Negative login scenarios
+npx wdio run wdio.conf.js --cucumberOpts.tags="@negative"
+# End-to-end checkout
+npx wdio run wdio.conf.js --cucumberOpts.tags="@e2e"
+# Regression scenarios
+npx wdio run wdio.conf.js --cucumberOpts.tags="@regression"
 
 # 3. PDF files
 Get-ChildItem ".\pdf_download" -Filter "*.pdf"
