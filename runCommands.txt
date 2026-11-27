@@ -3,9 +3,10 @@ Repository: https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
 Branch: main | WebdriverIO: 10.2.0
 
 # 1. First-time clone and setup
-cd "D:\Automation\Playwright"
+# Choose a folder for the project (example: Documents)
+cd "$HOME\Documents"
 git clone https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
-cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
+cd ".\WebdriverIO_Cucumber"
 git switch main
 git pull origin main
 node -v
@@ -17,24 +18,36 @@ npm audit
 # 2. Run tests
 # Run all 6 test scenarios
 npm test
+
 # Run login scenarios (valid, locked-out, invalid password, blank username)
 npm run test:login
-# Run checkout scenarios (complete checkout, remove backpack)
+
+# Run checkout scenarios (complete checkout and remove backpack)
+# PDF download and validation are included in the checkout workflow
 npm run test:checkout
-# Run smoke scenarios (valid login, complete checkout)
+
+# Run smoke scenarios (valid login and complete checkout)
 npm run test:smoke
+
 # Run regression scenarios (scenarios tagged @regression)
 npm run test:regression
 
-# 3. Run tests by individual tag
+# 3. Run tests by individual Cucumber tag
 # Positive login
 npx wdio run wdio.conf.js --cucumberOpts.tags="@positive"
+
 # Negative login scenarios
 npx wdio run wdio.conf.js --cucumberOpts.tags="@negative"
+
 # End-to-end checkout
 npx wdio run wdio.conf.js --cucumberOpts.tags="@e2e"
+
 # Regression scenarios
 npx wdio run wdio.conf.js --cucumberOpts.tags="@regression"
+
+# Note: A scenario with multiple tags can be selected by any matching tag.
+# A tag placed above Feature applies to all scenarios in that feature.
+# Check feature-file tag placement to confirm which scenarios regression selects.
 
 # 4. PDF files
 Get-ChildItem ".\pdf_download" -Filter "*.pdf"
@@ -43,8 +56,9 @@ Get-ChildItem ".\pdf_download" -Filter "*.pdf"
 npm run report:allure
 npm run report:open
 
-# 6. Update project
-cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
+# 6. Update existing project
+# Run these commands from the existing project folder
+cd "$HOME\Documents\WebdriverIO_Cucumber"
 git switch main
 git pull origin main
 npm ci
@@ -64,6 +78,7 @@ npx wdio --version
 npm test
 
 # 9. Clean generated project files
+# These commands delete generated PDFs and Allure output only.
 Remove-Item ".\pdf_download\*.pdf" -Force -ErrorAction SilentlyContinue
 Remove-Item ".\allure-results" -Recurse -Force -ErrorAction SilentlyContinue
 Remove-Item ".\allure-report" -Recurse -Force -ErrorAction SilentlyContinue
