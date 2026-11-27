@@ -26,3 +26,5 @@ Thumbs.db
 # Generated PDF downloads
 pdf_download/*
 !pdf_download/.gitkeep
+
+npm-audit-report.json

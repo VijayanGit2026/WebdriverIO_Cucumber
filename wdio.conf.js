@@ -65,7 +65,7 @@ exports.config = {
         failFast: false,
         timeout: 60000,
         retry: 0,
-        tagExpression: process.env.CUCUMBER_TAGS || '',
+        tags: process.env.CUCUMBER_TAGS || '',
         ignoreUndefinedDefinitions: false
     },
 
