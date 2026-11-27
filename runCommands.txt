@@ -15,7 +15,6 @@ npx wdio --version
 npm audit
 
 # 2. Run tests
-
 # Run all 6 test scenarios
 npm test
 # Run login scenarios (valid, locked-out, invalid password, blank username)
@@ -27,6 +26,7 @@ npm run test:smoke
 # Run regression scenarios (scenarios tagged @regression)
 npm run test:regression
 
+# 3. Run tests by individual tag
 # Positive login
 npx wdio run wdio.conf.js --cucumberOpts.tags="@positive"
 # Negative login scenarios
@@ -36,34 +36,34 @@ npx wdio run wdio.conf.js --cucumberOpts.tags="@e2e"
 # Regression scenarios
 npx wdio run wdio.conf.js --cucumberOpts.tags="@regression"
 
-# 3. PDF files
+# 4. PDF files
 Get-ChildItem ".\pdf_download" -Filter "*.pdf"
 
-# 4. Allure report
+# 5. Allure report
 npm run report:allure
 npm run report:open
 
-# 5. Update project
+# 6. Update project
 cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
 git switch main
 git pull origin main
 npm ci
 
-# 6. Commit and push changes
+# 7. Commit and push changes
 git status
 git add -A
 git status
 git commit -m "Describe your changes"
 git push origin main
 
-# 7. Final verification
+# 8. Final verification
 git status
 git log -5 --oneline
 git branch -a
 npx wdio --version
 npm test
 
-# 8. Clean Generated Project Files
+# 9. Clean generated project files
 Remove-Item ".\pdf_download\*.pdf" -Force -ErrorAction SilentlyContinue
 Remove-Item ".\allure-results" -Recurse -Force -ErrorAction SilentlyContinue
 Remove-Item ".\allure-report" -Recurse -Force -ErrorAction SilentlyContinue
