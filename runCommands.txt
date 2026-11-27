@@ -1,0 +1,49 @@
+WebdriverIO + Cucumber - Run Commands
+Repository: https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+Branch: main | WebdriverIO: 10.2.0
+
+# 1. First-time clone and setup
+cd "D:\Automation\Playwright"
+git clone https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
+git switch main
+git pull origin main
+node -v
+npm -v
+npm ci
+npx wdio --version
+npm audit
+
+# 2. Run tests
+npm test
+npm run test:login
+npm run test:checkout
+npm run test:smoke
+npm run test:regression
+
+# 3. PDF files
+Get-ChildItem ".\pdf_download" -Filter "*.pdf"
+
+# 4. Allure report
+npm run report:allure
+npm run report:open
+
+# 5. Update project
+cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
+git switch main
+git pull origin main
+npm ci
+
+# 6. Commit and push changes
+git status
+git add -A
+git status
+git commit -m "Describe your changes"
+git push origin main
+
+# 7. Final verification
+git status
+git log -5 --oneline
+git branch -a
+npx wdio --version
+npm test
