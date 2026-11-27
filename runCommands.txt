@@ -47,3 +47,8 @@ git log -5 --oneline
 git branch -a
 npx wdio --version
 npm test
+
+# 8. Clean Generated Project Files
+Remove-Item ".\pdf_download\*.pdf" -Force -ErrorAction SilentlyContinue
+Remove-Item ".\allure-results" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item ".\allure-report" -Recurse -Force -ErrorAction SilentlyContinue
