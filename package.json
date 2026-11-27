@@ -13,7 +13,15 @@
     "report:allure": "allure generate allure-results --clean -o allure-report",
     "report:open": "allure open allure-report"
   },
-  "keywords": ["webdriverio", "javascript", "cucumber", "saucedemo", "automation", "bdd", "pom"],
+  "keywords": [
+    "webdriverio",
+    "javascript",
+    "cucumber",
+    "saucedemo",
+    "automation",
+    "bdd",
+    "pom"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@wdio/cli": "^9.0.0",
@@ -24,5 +32,8 @@
     "@wdio/globals": "^9.0.0",
     "allure-commandline": "^2.34.0",
     "dotenv": "^16.4.7"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }
