@@ -1,38 +1,68 @@
-WebdriverIO + Cucumber - Run Commands
-Repository: https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
-Branch: main | WebdriverIO: 10.2.0
+====================================================================
+             WEBDRIVERIO + CUCUMBER - RUN COMMANDS
+====================================================================
 
-# 1. First-time clone and setup
-# Choose a folder for the project (example: Documents)
-cd "$HOME\Documents"
+Repository     : https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
+Branch         : main
+WebdriverIO    : 10.2.0
+Shell          : Windows PowerShell
+
+--------------------------------------------------------------------
+1. FIRST-TIME CLONE AND SETUP
+--------------------------------------------------------------------
+
+# Navigate to the parent folder
+cd "D:\Automation\Playwright"
+
+# Clone the repository
 git clone https://github.com/VijayanGit2026/WebdriverIO_Cucumber.git
-cd ".\WebdriverIO_Cucumber"
+
+# Navigate to the project folder
+cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
+
+# Switch to main and get the latest code
 git switch main
 git pull origin main
+
+# Check Node.js and npm versions
 node -v
 npm -v
+
+# Install project dependencies
 npm ci
+
+# Verify WebdriverIO version and dependency security
 npx wdio --version
 npm audit
 
-# 2. Run tests
+
+--------------------------------------------------------------------
+2. RUN TESTS
+--------------------------------------------------------------------
+
 # Run all 6 test scenarios
 npm test
 
-# Run login scenarios (valid, locked-out, invalid password, blank username)
+# Run login scenarios:
+# Valid login, locked-out account, invalid password, blank username
 npm run test:login
 
-# Run checkout scenarios (complete checkout and remove backpack)
-# PDF download and validation are included in the checkout workflow
+# Run checkout scenarios:
+# Complete checkout and remove backpack from cart
 npm run test:checkout
 
-# Run smoke scenarios (valid login and complete checkout)
+# Run smoke scenarios:
+# Valid login and complete checkout
 npm run test:smoke
 
-# Run regression scenarios (scenarios tagged @regression)
+# Run scenarios tagged @regression
 npm run test:regression
 
-# 3. Run tests by individual Cucumber tag
+
+--------------------------------------------------------------------
+3. RUN TESTS BY INDIVIDUAL CUCUMBER TAG
+--------------------------------------------------------------------
+
 # Positive login
 npx wdio run wdio.conf.js --cucumberOpts.tags="@positive"
 
@@ -45,40 +75,95 @@ npx wdio run wdio.conf.js --cucumberOpts.tags="@e2e"
 # Regression scenarios
 npx wdio run wdio.conf.js --cucumberOpts.tags="@regression"
 
-# Note: A scenario with multiple tags can be selected by any matching tag.
-# A tag placed above Feature applies to all scenarios in that feature.
-# Check feature-file tag placement to confirm which scenarios regression selects.
 
-# 4. PDF files
+--------------------------------------------------------------------
+4. VIEW DOWNLOADED PDF FILES
+--------------------------------------------------------------------
+
+# List generated order PDFs
 Get-ChildItem ".\pdf_download" -Filter "*.pdf"
 
-# 5. Allure report
+
+--------------------------------------------------------------------
+5. GENERATE AND OPEN ALLURE REPORT
+--------------------------------------------------------------------
+
+# Generate the Allure HTML report
 npm run report:allure
+
+# Open the Allure report
 npm run report:open
 
-# 6. Update existing project
-# Run these commands from the existing project folder
-cd "$HOME\Documents\WebdriverIO_Cucumber"
+
+--------------------------------------------------------------------
+6. UPDATE AN EXISTING PROJECT
+--------------------------------------------------------------------
+
+# Navigate to the existing project folder
+cd "D:\Automation\Playwright\WebdriverIO_Cucumber"
+
+# Switch to main and pull the latest changes
 git switch main
 git pull origin main
+
+# Install dependencies if package files have changed
 npm ci
 
-# 7. Commit and push changes
+
+--------------------------------------------------------------------
+7. COMMIT AND PUSH CHANGES
+--------------------------------------------------------------------
+
+# Check the working tree
 git status
+
+# Stage all changes
 git add -A
+
+# Review staged changes
 git status
+
+# Commit your changes
 git commit -m "Describe your changes"
+
+# Push changes to GitHub
 git push origin main
 
-# 8. Final verification
+
+--------------------------------------------------------------------
+8. FINAL VERIFICATION
+--------------------------------------------------------------------
+
+# Check working-tree status
 git status
+
+# View the latest 5 commits
 git log -5 --oneline
+
+# View local and remote branches
 git branch -a
+
+# Verify WebdriverIO version
 npx wdio --version
+
+# Run the complete test suite
 npm test
 
-# 9. Clean generated project files
-# These commands delete generated PDFs and Allure output only.
+
+--------------------------------------------------------------------
+9. CLEAN GENERATED PROJECT FILES
+--------------------------------------------------------------------
+
+# Delete generated order PDFs only
 Remove-Item ".\pdf_download\*.pdf" -Force -ErrorAction SilentlyContinue
+
+# Delete generated Allure results
 Remove-Item ".\allure-results" -Recurse -Force -ErrorAction SilentlyContinue
+
+# Delete generated Allure HTML report
 Remove-Item ".\allure-report" -Recurse -Force -ErrorAction SilentlyContinue
+
+
+====================================================================
+                         END OF COMMANDS
+====================================================================
