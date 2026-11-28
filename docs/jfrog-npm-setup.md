@@ -2,7 +2,7 @@
 
 JFrog Artifactory is an artifact/package repository. npm is the package manager used by this JavaScript project. They can work together: npm can download approved packages from an Artifactory npm virtual/remote repository, and a pipeline can publish approved internal packages to an Artifactory local repository.
 
-This sample intentionally contains **no JFrog URL, token, username, password, or `.npmrc` credentials**. Charu must use the repository URL and authentication method supplied by her project team.
+This sample intentionally contains **no JFrog URL, token, username, password, or `.npmrc` credentials**. You must use the repository URL and authentication method supplied by her project team.
 
 Typical team-approved setup:
 
